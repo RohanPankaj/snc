@@ -384,9 +384,6 @@ delete_operator "deployment/cluster-monitoring-operator" "openshift-monitoring" 
 delete_operator "deployment/prometheus-operator" "openshift-monitoring" "app.kubernetes.io/name=prometheus-operator"
 delete_operator "deployment/prometheus-adapter" "openshift-monitoring" "name=prometheus-adapter"
 delete_operator "statefulset/alertmanager-main" "openshift-monitoring" "app=alertmanager"
-if [ $ARCH != "ppc64le" ]; then
-    delete_operator "deployment.apps/csi-snapshot-controller-operator" "openshift-cluster-storage-operator" "app=csi-snapshot-controller-operator"
-fi
 
 ${OC} delete statefulset,deployment,daemonset --all -n openshift-monitoring
 
